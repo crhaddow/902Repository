@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="urn:ccsds:schema:cssm:1.0.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:ccsds:schema:cssm:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+<xsd:include schemaLocation="902x12p11-CDE.xsd"/>
+
+<!--********************************************************************************************************************** -->
+<!-- Define Service management Utilization Request Formats (SMURF) type -->
+<!--********************************************************************************************************************** -->
+
+	<xsd:element name="srvMgtUtilReq" type="SrvMgtUtilReqType"/>
+	<xsd:complexType name="SrvMgtUtilReqType">
+		<xsd:complexContent>
+			<xsd:restriction base="SrvMgtInfoEntityType">
+				<xsd:sequence>
+					<xsd:element ref="srvMgtUtilReqHeader" minOccurs="1" maxOccurs="1" />
+					<xsd:element ref="requestType" minOccurs="1" maxOccurs="unbounded" />
+				</xsd:sequence>
+			</xsd:restriction>			
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+
+<!--********************************************************************************************************************** -->
+<!-- Define SMURF possible statuses -->
+<!--********************************************************************************************************************** -->
+
+	<xsd:simpleType name="UtilizationReqStatusType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="TEST"/>
+			<xsd:enumeration value="OPERATIONAL"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+
+<!--********************************************************************************************************************** -->
+<!-- Define SMURF Header -->
+<!--********************************************************************************************************************** -->
+
+	<xsd:element name="srvMgtUtilReqHeader" type="SrvMgtUtilReqHeaderType" substitutionGroup="srvMgtHeader"/>
+	<xsd:complexType name="SrvMgtUtilReqHeaderType">
+		<xsd:complexContent>
+			<xsd:extension base="SrvMgtHeaderType">
+				<xsd:sequence>
+					<!-- allow a list of parameters derived from AbstractParameter -->
+					<xsd:element ref="abstractParameter" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+				<xsd:attribute name="utilizationReqStatus" type="UtilizationReqStatusType" use="required"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+<!--********************************************************************************************************************** -->
+<!-- Define space user node -->
+<!--********************************************************************************************************************** -->
+
+	<xsd:element name="spaceUserNode" type="xsd:string" />
+
+
+<!--********************************************************************************************************************** -->
+<!-- Define abstract Request Type -->
+<!--********************************************************************************************************************** -->
+
+	<xsd:element name="requestType" type="RequestTypeType" substitutionGroup="srvMgtData" abstract="true"/>
+	<xsd:complexType name="RequestTypeType">
+		<xsd:complexContent>
+			<xsd:extension base="SrvMgtDataType">
+				<xsd:sequence>
+					<!-- allow a list of parameters derived from AbstractParameter -->
+					<xsd:element ref="abstractParameter" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+				<xsd:attribute name="requestID" type="xsd:string" use="required"/>
+				<xsd:attribute name="serviceAgreementRef" type="xsd:string" use="optional"/>
+				<xsd:attribute name="comment" type="xsd:string" use="optional"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+<!--********************************************************************************************************************** -->
+<!-- Define abstract Report Request Type and concrete report requests-->
+<!--********************************************************************************************************************** -->
+
+	<xsd:element name="reportReq" type="ReportReqType" substitutionGroup="requestType" abstract = "true"/>
+	<xsd:complexType name="ReportReqType">
+		<xsd:complexContent>
+			<xsd:extension base="RequestTypeType">
+				<xsd:sequence>
+					<!--  allow a list of space user nodes -->
+					<xsd:element  ref="spaceUserNode" minOccurs="1" maxOccurs="unbounded"/>
+				</xsd:sequence>
+				<xsd:attribute name="startTime" type="CcsdsAsciiTimeCodeBType" use="required"/>
+				<xsd:attribute name="endTime" type="CcsdsAsciiTimeCodeBType" use="required"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="simpleScheduleRepReq" type="SimpleScheduleRepReqType" substitutionGroup="reportReq"/>
+	<xsd:complexType name="SimpleScheduleRepReqType">
+		<xsd:complexContent>
+			<xsd:extension base="ReportReqType">
+				<xsd:sequence>
+					<!--  allow a list of aperture locations -->
+					<xsd:element ref="apertureLocation" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+				<xsd:attribute name="reportType" use="required">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:enumeration value="SIM_SCH_SPECIFIC"/>
+							<xsd:enumeration value="SIM_SCH_FREE"/>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+		
+
+<!--********************************************************************************************************************** -->
+<!-- Define Comms Planning Request Type                                                                                    -->
+<!--********************************************************************************************************************** -->
+
+	<xsd:element name="commsPlanningReq" type="CommsPlanningReqType" substitutionGroup="requestType"/>
+	<xsd:complexType name="CommsPlanningReqType">
+		<xsd:complexContent>
+			<xsd:extension base="RequestTypeType">
+			<xsd:sequence>
+					<!--  allow exactly 1 space user nodes -->
+					<xsd:element  ref="spaceUserNode" minOccurs="1" maxOccurs="1"/>
+					<!-- allow a list of constraints derived from Constraints -->
+					<xsd:element ref="constraints" minOccurs="0" maxOccurs="unbounded"/>
+					<!-- allow a list of planningInfoTypes -->
+		    		<xsd:element ref="planningInfoTypeList" minOccurs="1" maxOccurs="1"/>
+				</xsd:sequence>
+				<xsd:attribute name="trajectoryRef" type="xsd:string" use="required"/>
+				<xsd:attribute name="configurationProfileRef" type="xsd:string" use="optional"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+<!--********************************************************************************************************************** -->
+<!-- Define Info Request Type                                                                                              -->
+<!--********************************************************************************************************************** -->
+
+	<xsd:element name="dataEntityReq" type="DataEntityReqType" substitutionGroup="requestType"/>
+	<xsd:complexType name="DataEntityReqType">
+		<xsd:complexContent>
+			<xsd:extension base="RequestTypeType">
+				<xsd:sequence>
+					<!-- allow lists of InfoTypes -->
+		    		<xsd:element name="configurationProfileRef" type="xsd:string"   minOccurs="0" maxOccurs="unbounded"/>
+		    		<xsd:element name="eventSequenceRef" type="xsd:string"   minOccurs="0" maxOccurs="unbounded"/>
+		    		<xsd:element name="serviceAgreementRef" type="xsd:string"   minOccurs="0" maxOccurs="unbounded"/>
+		    		<xsd:element name="servicePackageRef" type="xsd:string"   minOccurs="0" maxOccurs="unbounded"/>
+		    		<xsd:element name="trajectoryRef" type="xsd:string"   minOccurs="0" maxOccurs="unbounded"/>
+		    		<xsd:element name="ddorScanPatternRef" type="xsd:string"   minOccurs="0" maxOccurs="unbounded"/>
+		    		<xsd:element name="sicfRef" type="xsd:string"   minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	
+<!--********************************************************************************************************************** -->
+<!-- Define Submission Request Type                                                                                        -->
+<!--********************************************************************************************************************** -->
+
+	<xsd:element name="submissionReq" type="SubmissionReqType" substitutionGroup="requestType" />
+	<xsd:complexType name="SubmissionReqType">
+		<xsd:complexContent>
+			<xsd:extension base="RequestTypeType">
+				<xsd:sequence>
+					<!--  allow exactly 1 space user nodes -->
+					<xsd:element  ref="spaceUserNode" minOccurs="1" maxOccurs="1"/>
+					<!--  allow a data wrapper class derived from AbstractDataSubWrapper -->
+					<xsd:element ref="abstractSubmissionWrapper" minOccurs="1" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	
+<!--********************************************************************************************************************** -->
+<!-- Define abstract Service Package Request Type and concrete types derived from it -->
+<!--********************************************************************************************************************** -->
+
+	<xsd:element name="servicePkgReq" type="ServicePkgReqType" substitutionGroup="requestType" abstract="true"/>
+	<xsd:complexType name="ServicePkgReqType">
+		<xsd:complexContent>
+			<xsd:extension base="RequestTypeType">
+				<xsd:sequence>
+					<!--  allow exactly 1 space user nodes -->
+					<xsd:element  ref="spaceUserNode" minOccurs="1" maxOccurs="1"/>
+				</xsd:sequence>
+				<xsd:attribute name="serviceReqID" type="xsd:string" use="required"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="deleteSrvPkgReq" type="DeleteSrvPkgReqType" substitutionGroup="servicePkgReq" />
+	<xsd:complexType name="DeleteSrvPkgReqType">
+		<xsd:complexContent>
+			<xsd:extension base="ServicePkgReqType">
+				<xsd:attribute name="deletePending" type="xsd:boolean" use="required"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="deleteSrvPkg" type="DeleteSrvPkgType" substitutionGroup="servicePkgReq" />
+	<xsd:complexType name="DeleteSrvPkgType">
+		<xsd:complexContent>
+			<xsd:extension base="ServicePkgReqType">
+				<xsd:sequence>
+					<!-- allow lists of srvPkgResIDs -->
+		    		<xsd:element name="srvPkgRef" type="xsd:string"   minOccurs="1" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="replaceSrvPkg" type="ReplaceSrvPkgType" substitutionGroup="servicePkgReq" />
+	<xsd:complexType name="ReplaceSrvPkgType">
+		<xsd:complexContent>
+			<xsd:extension base="ServicePkgReqType">
+				<xsd:sequence>
+					<!-- allow specification of service package -->
+					<xsd:element ref="abstractSrvPkg" minOccurs="1" maxOccurs="1"/>
+				</xsd:sequence>
+	    		<xsd:attribute name="srvPkgRef" type="xsd:string" use="required"/>
+				<xsd:attribute name="newBeginningOfTrack" type="CcsdsAsciiTimeCodeBType" use="optional"/>	
+				<xsd:attribute name="newEndOfTrack" type="CcsdsAsciiTimeCodeBType" use="optional"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	
+<!--********************************************************************************************************************** -->
+<!-- Define abstract Online Service Package Request Type and concrete types derived from it, as well as associated classes -->
+<!--********************************************************************************************************************** -->
+
+	<xsd:element name="onlineSrvPkgReq" type="OnlineSrvPkgReqType" substitutionGroup="servicePkgReq" abstract="true"/>
+	<xsd:complexType name="OnlineSrvPkgReqType">
+		<xsd:complexContent>
+			<xsd:extension base="ServicePkgReqType">
+				<xsd:sequence>
+					<!-- allow a list of classes derived from constraints. -->
+					<xsd:element ref="constraints" minOccurs="0" maxOccurs="unbounded"/>
+					<!-- required 1 class derived from abstractOnlineSrvPkg -->
+					<xsd:element ref="abstractOnlineSrvPkg" minOccurs="1" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="newOnlineSrvPkgReq" type="OnlineSrvPkgReqType" substitutionGroup="onlineSrvPkgReq" />
+	
+	<xsd:element name="replaceOnlineSrvPkgReq" type="OnlineSrvPkgReqType" substitutionGroup="onlineSrvPkgReq" />
+
+	
+<!--********************************************************************************************************************** -->
+<!-- Define abstract constraint                                                                                            -->
+<!--********************************************************************************************************************** -->
+
+<xsd:element name="constraints" type="ConstraintsType" abstract="true"/>
+<xsd:complexType name="ConstraintsType" />
+
+
+<!--********************************************************************************************************************** -->
+<!-- Define basic aperture constraint 					                                                                   -->
+<!--********************************************************************************************************************** -->
+
+<xsd:element name="apertureSelection" type="ApertureSelectionType" substitutionGroup="constraints"/>
+<xsd:complexType name="ApertureSelectionType" >
+	<xsd:complexContent>
+		<xsd:extension base="ConstraintsType">
+			<xsd:sequence>
+				<!-- allow a list of Aperture Locations -->
+				<xsd:element ref="apertureLocation" minOccurs="1" maxOccurs="1"/>
+			</xsd:sequence>
+			<xsd:attribute name="priority" use="optional">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:int">
+						<xsd:minInclusive value="1"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:extension>
+	</xsd:complexContent>
+</xsd:complexType>
+
+
+<!--********************************************************************************************************************** -->
+<!-- Define basic pass constraint 					                                                                       -->
+<!--********************************************************************************************************************** -->
+
+<xsd:element name="basicPass" type="BasicPassType" substitutionGroup="constraints"/>
+<xsd:complexType name="BasicPassType" >
+	<xsd:complexContent>
+		<xsd:extension base="ConstraintsType">
+			<xsd:attribute name="preferredStartTime" type="CcsdsAsciiTimeCodeBType" use="required" />
+			<xsd:attribute name="latestStartTime" type="CcsdsAsciiTimeCodeBType" use="optional" />
+			<xsd:attribute name="earliestStartTime" type="CcsdsAsciiTimeCodeBType" use="optional" />
+			<xsd:attribute name="preferredDuration" type="xsd:unsignedInt" use="required"/>
+			<xsd:attribute name="maxDuration" type="xsd:unsignedInt" use="optional"/>
+			<xsd:attribute name="minimumDuration" type="xsd:unsignedInt" use="optional"/>		
+		</xsd:extension>
+	</xsd:complexContent>
+</xsd:complexType>
+
+
+
+<!--********************************************************************************************************************** -->
+<!-- Define time of day type          					                                                                   -->
+<!--********************************************************************************************************************** -->
+
+	<xsd:element name="timeOfDay" type="TimeOfDayType"/>
+	<xsd:simpleType name="TimeOfDayType">
+		<xsd:restriction base="xsd:time">
+			<xsd:pattern value="[0-2][0-9]:[0-5][0-9]:[0-5][0-9]Z"/>      
+ 		</xsd:restriction>
+	</xsd:simpleType>
+
+
+<!--********************************************************************************************************************** -->
+<!-- Define standing order           					                                                                   -->
+<!--********************************************************************************************************************** -->
+
+	<xsd:element name="standingOrder" type="StandingOrderType" substitutionGroup="constraints"/>
+	<xsd:complexType name="StandingOrderType" >
+		<xsd:complexContent>
+			<xsd:extension base="ConstraintsType">
+				<xsd:attribute name="standingOrderStartTime" type="CcsdsAsciiTimeCodeBType" use="required"/>
+				<xsd:attribute name="standingOrderDuration" type="xsd:unsignedInt" use="required"/>
+				<xsd:attribute name="minNumOfPasses" use="optional">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:int">
+							<xsd:minInclusive value="1"/>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:attribute>
+				<xsd:attribute name="maxNumOfPasses" use="optional">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:int">
+							<xsd:minInclusive value="1"/>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:attribute>			
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+<!--********************************************************************************************************************** -->
+<!-- Define handover constraint 					                                                                   -->
+<!--********************************************************************************************************************** -->
+
+<xsd:element name="handover" type="HandoverType" substitutionGroup="constraints"/>
+<xsd:complexType name="HandoverType" >
+	<xsd:complexContent>
+		<xsd:extension base="ConstraintsType">
+			<xsd:attribute name="maximumHandovers" use="required">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:int">
+						<xsd:minInclusive value="0"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="minimumOverlap" type="xsd:int" use="required"/>
+			<xsd:attribute name="maximumOverlap" type="xsd:int" use="optional"/>
+			<xsd:attribute name="minimumSingleDuration" use="optional">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:int">
+						<xsd:minInclusive value="1"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:extension>
+	</xsd:complexContent>
+</xsd:complexType>
+
+
+<!--********************************************************************************************************************** -->
+<!-- Define pass range constraints					                                                                       -->
+<!--********************************************************************************************************************** -->
+
+	<xsd:element name="passRange" type="PassRangeType" substitutionGroup="constraints"/>
+	<xsd:complexType name="PassRangeType" >
+		<xsd:complexContent>
+			<xsd:extension base="ConstraintsType">
+				<xsd:attribute name="minRangeDuringPass" use="optional" type="xsd:unsignedInt" />
+				<xsd:attribute name="maxRangeDuringPass" use="optional" type="xsd:unsignedInt" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+<!--********************************************************************************************************************** -->
+<!-- Define pass elevation constraints					                                                                       -->
+<!--********************************************************************************************************************** -->
+
+	<xsd:element name="passElevation" type="PassElevationType" substitutionGroup="constraints"/>
+	<xsd:complexType name="PassElevationType" >
+		<xsd:complexContent>
+			<xsd:extension base="ConstraintsType">
+				<xsd:attribute name="minElevationDuringPass" use="optional">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:double">
+							<xsd:minInclusive value="0.0"/>
+							<xsd:maxInclusive value="90.0"/>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:attribute>
+				<xsd:attribute name="maxElevationDuringPass" use="optional">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:double">
+							<xsd:minInclusive value="0.0"/>
+							<xsd:maxInclusive value="90.0"/>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+<!--********************************************************************************************************************** -->
+<!-- Define pass interval constraints					                                                                   -->
+<!--********************************************************************************************************************** -->
+
+	<xsd:element name="passInterval" type="PassIntervalType" substitutionGroup="constraints"/>
+	<xsd:complexType name="PassIntervalType" >
+		<xsd:complexContent>
+			<xsd:extension base="ConstraintsType">
+				<xsd:attribute name="minIntBetweenPasses" use="optional" type="xsd:unsignedInt" />
+				<xsd:attribute name="maxIntBetweenPasses" use="optional" type="xsd:unsignedInt" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+<!--********************************************************************************************************************** -->
+<!-- Define pass duration constraints					                                                                   -->
+<!--********************************************************************************************************************** -->
+
+	<xsd:element name="passDuration" type="PassDurationType" substitutionGroup="constraints"/>
+	<xsd:complexType name="PassDurationType" >
+		<xsd:complexContent>
+			<xsd:extension base="ConstraintsType">
+				<xsd:attribute name="minPassDuration" use="optional" type="xsd:unsignedInt" />
+				<xsd:attribute name="maxPassDuration" use="optional" type="xsd:unsignedInt" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+<!--********************************************************************************************************************** -->
+<!-- Define pass daily time constraints					                                                                   -->
+<!--********************************************************************************************************************** -->
+
+	<xsd:simpleType name="DaysOfWeekType" >
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="MONDAY"/>
+			<xsd:enumeration value="TUESDAY"/>
+			<xsd:enumeration value="WEDNESDAY"/>
+			<xsd:enumeration value="THURSDAY"/>
+			<xsd:enumeration value="FRIDAY"/>
+			<xsd:enumeration value="SATURDAY"/>
+			<xsd:enumeration value="SUNDAY"/>
+		</xsd:restriction>
+	</xsd:simpleType>	
+	
+	<xsd:element name="passDailyTime" type="PassDailyTimeType" substitutionGroup="constraints"/>
+	<xsd:complexType name="PassDailyTimeType" >
+		<xsd:complexContent>
+			<xsd:extension base="ConstraintsType">
+				<xsd:sequence>
+					<!-- allow a list of days of week  -->
+			    	<xsd:element name="daysForPasses" type="DaysOfWeekType"   minOccurs="0" maxOccurs="7"/>
+				</xsd:sequence>
+				<xsd:attribute name="earliestPassStart" use="optional" type="TimeOfDayType" />
+				<xsd:attribute name="latestPassStart" use="optional" type="TimeOfDayType" />
+				<xsd:attribute name="earliestPassEnd" use="optional" type="TimeOfDayType" />
+				<xsd:attribute name="latestPassEnd" use="optional" type="TimeOfDayType" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+</xsd:schema>
