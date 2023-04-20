@@ -6,6 +6,9 @@
       <styles xmi:type="notation:TitleStyle" xmi:id="_lx-vsbOCEe2B0Mh7PpZkcw"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lx-vsrOCEe2B0Mh7PpZkcw"/>
     </children>
+    <styles xmi:type="notation:StringListValueStyle" xmi:id="_YHZHcN9SEe2q1uVJ0e9kGA" name="cssClass">
+      <stringListValue>_902Package-WhiteBook</stringListValue>
+    </styles>
     <element xmi:type="uml:Package" href="902xNN_DTM.uml#_GosgULN-Ee2B0Mh7PpZkcw"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lx-IobOCEe2B0Mh7PpZkcw" x="702" y="100"/>
   </children>
@@ -196,9 +199,6 @@
   <styles xmi:type="notation:DiagramStyle" xmi:id="_kIg3grOCEe2B0Mh7PpZkcw"/>
   <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_kIg3g7OCEe2B0Mh7PpZkcw" diagramKindId="org.eclipse.papyrus.uml.diagram.package">
     <owner xmi:type="uml:Model" href="902UMLModel.uml#_NQdT8LN9Ee2B0Mh7PpZkcw"/>
-  </styles>
-  <styles xmi:type="notation:EObjectListValueStyle" xmi:id="_LIFO8LauEe2_hdZ_kHCY0Q" name="css_stylesheets">
-    <eObjectListValue xmi:type="css:StyleSheetReference" href="902x12p11_CDE.notation#_pxPGYLaqEe2_hdZ_kHCY0Q"/>
   </styles>
   <element xmi:type="uml:Model" href="902UMLModel.uml#_NQdT8LN9Ee2B0Mh7PpZkcw"/>
   <edges xmi:type="notation:Connector" xmi:id="_yV144LOCEe2B0Mh7PpZkcw" type="Dependency_Edge" source="_n3HQMLOCEe2B0Mh7PpZkcw" target="_mmPeMLOCEe2B0Mh7PpZkcw">

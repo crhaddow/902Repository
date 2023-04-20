@@ -817,9 +817,6 @@
     <owner xmi:type="uml:Package" href="902x13_AED.uml#_uIEqMLN9Ee2B0Mh7PpZkcw"/>
   </styles>
   <styles xmi:type="notation:CanonicalStyle" xmi:id="_QSFygLaqEe2_hdZ_kHCY0Q" canonical="false"/>
-  <styles xmi:type="notation:EObjectListValueStyle" xmi:id="_4ibCwLaqEe2_hdZ_kHCY0Q" name="css_stylesheets">
-    <eObjectListValue xmi:type="css:StyleSheetReference" href="902x12p11_CDE.notation#_pxPGYLaqEe2_hdZ_kHCY0Q"/>
-  </styles>
   <element xmi:type="uml:Package" href="902x13_AED.uml#_uIEqMLN9Ee2B0Mh7PpZkcw"/>
   <edges xmi:type="notation:Connector" xmi:id="_EFbb4LOKEe2B0Mh7PpZkcw" type="Association_Edge" source="_f_FZcLOBEe2B0Mh7PpZkcw" target="_spkD0LOIEe2B0Mh7PpZkcw" routing="Rectilinear">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_MvgL8rOREe2B0Mh7PpZkcw" source="PapyrusCSSForceValue">
