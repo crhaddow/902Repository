@@ -40,11 +40,11 @@
   <packagedElement xmi:type="uml:Enumeration" xmi:id="_1I-94MP0Ee2ZjKYOZyImSQ" name="Enumeration:CommsPlanningInfoStatus"/>
   <packagedElement xmi:type="uml:Enumeration" xmi:id="_S3aIoN9fEe2lR7GkXag1zA" name="Enumeration:ServiceAgreementStatus"/>
   <packagedElement xmi:type="uml:Enumeration" xmi:id="_U1Lc4N9fEe2lR7GkXag1zA" name="Enumeration:ConfigProfileStatus"/>
-  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_spdBEMi7Ee2d1fZUw_41UA">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_spdBEci7Ee2d1fZUw_41UA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+  <profileApplication xmi:id="_spdBEMi7Ee2d1fZUw_41UA">
+    <eAnnotations xmi:id="_spdBEci7Ee2d1fZUw_41UA" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
     </eAnnotations>
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_spdoIMi7Ee2d1fZUw_41UA" source="duplicatedProfile"/>
-    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+    <eAnnotations xmi:id="_spdoIMi7Ee2d1fZUw_41UA" source="duplicatedProfile"/>
+    <appliedProfile href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
   </profileApplication>
 </uml:Package>
