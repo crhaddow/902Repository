@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_8pBLILN9Ee2B0Mh7PpZkcw" name="902x12p11-CDE" visibility="public">
   <ownedComment xmi:type="uml:Comment" xmi:id="_waJuMLZ1Ee2ZeKPECqTgyA">
-    <annotatedElement xmi:type="uml:Class" href="902x13_AED.uml#_spjcwLOIEe2B0Mh7PpZkcw"/>
+    <annotatedElement xmi:type="uml:Package" href="902x05_SACP.uml#_lLBYgMNIEe2ZjKYOZyImSQ"/>
     <body>For clarity  specializations of the AbstractParameter class are not shown on this diagram </body>
   </ownedComment>
   <packagedElement xmi:type="uml:Dependency" xmi:id="_yVy1kLOCEe2B0Mh7PpZkcw" client="_8pBLILN9Ee2B0Mh7PpZkcw">

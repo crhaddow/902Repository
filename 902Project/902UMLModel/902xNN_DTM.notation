@@ -705,6 +705,34 @@
     <element xmi:type="uml:Enumeration" href="902xNN_DTM.uml#_1I-94MP0Ee2ZjKYOZyImSQ"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1JEdccP0Ee2ZjKYOZyImSQ" x="2540" y="360" width="261" height="61"/>
   </children>
+  <children xmi:type="notation:Shape" xmi:id="_S3b90N9fEe2lR7GkXag1zA" type="Enumeration_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_S3b90t9fEe2lR7GkXag1zA" type="Enumeration_NameLabel"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_S3b9099fEe2lR7GkXag1zA" type="Enumeration_FloatingNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_S3b91N9fEe2lR7GkXag1zA" y="15"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_S3ck4N9fEe2lR7GkXag1zA" type="Enumeration_LiteralCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_S3ck4d9fEe2lR7GkXag1zA"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_S3ck4t9fEe2lR7GkXag1zA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_S3ck499fEe2lR7GkXag1zA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_S3ck5N9fEe2lR7GkXag1zA"/>
+    </children>
+    <element xmi:type="uml:Enumeration" href="902xNN_DTM.uml#_S3aIoN9fEe2lR7GkXag1zA"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_S3b90d9fEe2lR7GkXag1zA" x="2840" y="360" width="261" height="61"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_U1MrAN9fEe2lR7GkXag1zA" type="Enumeration_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_U1MrAt9fEe2lR7GkXag1zA" type="Enumeration_NameLabel"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_U1MrA99fEe2lR7GkXag1zA" type="Enumeration_FloatingNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_U1MrBN9fEe2lR7GkXag1zA" y="15"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_U1MrBd9fEe2lR7GkXag1zA" type="Enumeration_LiteralCompartment">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_U1MrBt9fEe2lR7GkXag1zA"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_U1MrB99fEe2lR7GkXag1zA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_U1MrCN9fEe2lR7GkXag1zA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U1MrCd9fEe2lR7GkXag1zA"/>
+    </children>
+    <element xmi:type="uml:Enumeration" href="902xNN_DTM.uml#_U1Lc4N9fEe2lR7GkXag1zA"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U1MrAd9fEe2lR7GkXag1zA" x="3140" y="360" width="261" height="61"/>
+  </children>
   <styles xmi:type="notation:StringValueStyle" xmi:id="_YSUCYbN-Ee2B0Mh7PpZkcw" name="diagram_compatibility_version" stringValue="1.4.0"/>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_YSUCYrN-Ee2B0Mh7PpZkcw"/>
   <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_YSUCY7N-Ee2B0Mh7PpZkcw" diagramKindId="org.eclipse.papyrus.uml.diagram.class">
