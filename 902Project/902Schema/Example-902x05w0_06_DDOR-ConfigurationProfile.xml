@@ -3,7 +3,8 @@
 	<configurationProfileHeader originatingOrganization="ESA" generationTime="2021-160T11:20:30" version="1" purpose="Testing purposes" description="Delta DOR Configuration" serviceAgreementRef="ESA-NASA-AgreementNo-42" status="TEST">
 	</configurationProfileHeader>
 	<configurationProfileData configurationProfileId="ddor-x-25" configurationProfileNickname="deltaDor">
-		<serviceProfile serviceType="DELTADOR" frequencyBand="X-DS">
+		<serviceProfile>
+			<serviceInfo serviceType="DELTADOR" frequencyBand="X-DS"/>
 			<dependencyConfig>
 				<apertureStratumFR frNickname="Aperture1">
 					<physicalChannelStratumFR frNickname="401ReceptionChannel1">

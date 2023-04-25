@@ -3,7 +3,8 @@
 <configurationProfile xsi:schemaLocation="urn:ccsds:schema:cssm:1.0.0 Example-902x05w0_06_Mission_1_ConfigProfile.xsd" xmlns="urn:ccsds:schema:cssm:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<configurationProfileHeader originatingOrganization="DLR-GSOC" generationTime="2021-363T13:30:00" version="3" purpose="Mission Configuration" description="Standard TM-TC Configuration Profile for Mission 1" serviceAgreementRef="DLR-ESA-SAgr2021-12-20-Cross-Support-Mission1" status="TEST"/>
 	<configurationProfileData configurationProfileId="DlrConfProfMission1Std" configurationProfileNickname="StandardMission1Profile">
-		<serviceProfile serviceType="APA-AZ/EL" frequencyBand="S-NE">
+		<serviceProfile>
+			<serviceInfo serviceType="APA-AZ/EL" frequencyBand="S-NE"/>
 			<dependencyConfig>
 				<apertureStratumFR frNickname="S67"/>
 			</dependencyConfig>
@@ -49,7 +50,8 @@
 				</AntennaElement>
 			</configurationParameters>
 		</serviceProfile>
-		<serviceProfile serviceType="TELEMETRY" frequencyBand="S-NE">
+		<serviceProfile>
+			<serviceInfo serviceType="TELEMETRY" frequencyBand="S-NE"/>
 			<dependencyConfig>
 				<apertureStratumFR frNickname="S67">
 					<physicalChannelStratumFR frNickname="Cortex67-phys-tm">
@@ -169,7 +171,8 @@
 				</RcfTsProviderElement>
 			</configurationParameters>
 		</serviceProfile>
-		<serviceProfile serviceType="TELECOMMAND" frequencyBand="S-NE">
+		<serviceProfile>
+			<serviceInfo serviceType="TELECOMMAND" frequencyBand="S-NE"/>
 			<dependencyConfig>
 				<apertureStratumFR frNickname="S67">
 					<physicalChannelStratumFR frNickname="Cortex67-phys-tc">
