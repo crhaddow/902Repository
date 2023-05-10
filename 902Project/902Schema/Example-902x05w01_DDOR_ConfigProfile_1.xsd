@@ -3,19 +3,15 @@
 	<!--********************************************************************************************************************** -->
 	<!-- Common CCSDS CSS SM Includes -->
 	<!--********************************************************************************************************************** -->
-	<xsd:include schemaLocation="902x12p11-CDE.xsd"/>
-	<xsd:include schemaLocation="902x05w0_06-ConfPrflCmnClss.xsd"/>
+	<xsd:include schemaLocation="902x12p11-CDE.xsd.xsd"/>
+	<xsd:include schemaLocation="902x05w01-ConfPrflCmnClss.xsd"/>
 	<!--********************************************************************************************************************** -->
 	<!-- Custom Project Functional Resource Strata Includes -->
 	<!--********************************************************************************************************************** -->
 	<xsd:include schemaLocation="SanaRegistry/Antenna.xsd"/>
 	<xsd:include schemaLocation="SanaRegistry/Ccsds401SpaceLinkCarrierRcpt.xsd"/>
-	<xsd:include schemaLocation="SanaRegistry/Ccsds401SpaceLinkCarrierXmit.xsd"/>
-	<xsd:include schemaLocation="SanaRegistry/FlfSyncAndChnlDecode.xsd"/>
-	<xsd:include schemaLocation="SanaRegistry/TcPlopSyncAndChnlEncode.xsd"/>
-	<xsd:include schemaLocation="SanaRegistry/RcfTsProvider.xsd"/>
-	<xsd:include schemaLocation="SanaRegistry/FcltuTsProvider.xsd"/>
-	<xsd:include schemaLocation="SanaRegistry/OfflineFrameBuffer.xsd"/>
+	<xsd:include schemaLocation="SanaRegistry/DdorRawDataCollection.xsd"/>
+	<xsd:include schemaLocation="SanaRegistry/DdorRawDataStore.xsd"/>
 	<!--********************************************************************************************************************** -->
 	<!-- Define Configuration Profile Information type -->
 	<!--********************************************************************************************************************** -->

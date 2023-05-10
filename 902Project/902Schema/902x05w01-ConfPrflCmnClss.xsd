@@ -4,19 +4,28 @@
 	<!-- the "glue" for the FRM schemas -->
 	<xsd:include schemaLocation="SanaRegistry/AbstractFrStrataParameterSets.xsd"/>
 	<!--********************************************************************************************************************** -->
-	<!-- Define Configuration Profile Container  -->
+	<!-- Define Configuration Profile Container Wrapper -->
 	<!--********************************************************************************************************************** -->
-	<xsd:element name="configurationProfileData" type="ConfigurationProfileDataType" substitutionGroup="srvMgtData"/>
-	<xsd:complexType name="ConfigurationProfileDataType">
+	<xsd:element name="configurationProfileDataWrapper" type="ConfigurationProfileDataWrapperType" substitutionGroup="srvMgtData"/>
+	<xsd:complexType name="ConfigurationProfileDataWrapperType">
 		<xsd:complexContent>
 			<xsd:extension base="SrvMgtDataType">
 				<xsd:sequence>
-					<xsd:element ref="serviceProfile" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="configurationProfileData" minOccurs="1" maxOccurs="1"/>
 				</xsd:sequence>
-				<xsd:attribute name="configurationProfileId" type="xsd:string" use="required"/>
-				<xsd:attribute name="configurationProfileNickname" type="xsd:string"/>
 			</xsd:extension>
 		</xsd:complexContent>
+	</xsd:complexType>
+	<!--********************************************************************************************************************** -->
+	<!-- Define Configuration Profile Container Wrapper -->
+	<!--********************************************************************************************************************** -->
+	<xsd:element name="configurationProfileData" type="ConfigurationProfileDataType"/>
+	<xsd:complexType name="ConfigurationProfileDataType">
+		<xsd:sequence>
+			<xsd:element ref="serviceProfile" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="configurationProfileId" type="xsd:string" use="required"/>
+		<xsd:attribute name="configurationProfileNickname" type="xsd:string"/>
 	</xsd:complexType>
 	<!--********************************************************************************************************************** -->
 	<!-- Define Service Profile -->
@@ -24,21 +33,10 @@
 	<xsd:element name="serviceProfile" type="ServiceProfileType"/>
 	<xsd:complexType name="ServiceProfileType">
 		<xsd:sequence>
-			<xsd:element name="serviceInfo" type="ServiceInfoType" minOccurs="1" maxOccurs="1"/>
-			<xsd:element name="dependencyConfig" minOccurs="0">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element ref="apertureStratumFR" minOccurs="0" maxOccurs="unbounded"/>
-						<xsd:element ref="slsRadiometricDataProdStratumFR" minOccurs="0" maxOccurs="unbounded"/>
-						<xsd:element ref="srvMgtFunctionsStratumFR" minOccurs="0" maxOccurs="unbounded"/>
-						<xsd:element ref="offlineDataStorageStratumFR" minOccurs="0" maxOccurs="unbounded"/>
-						<xsd:element ref="unregisteredStratumFR" minOccurs="0" maxOccurs="unbounded"/>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
 			<xsd:element name="configurationParameters">
 				<xsd:complexType>
 					<xsd:sequence>
+						<xsd:element name="serviceInfo" type="ServiceInfoType" minOccurs="1" maxOccurs="1"/>
 						<xsd:element ref="ApertureStratumParameters" minOccurs="0" maxOccurs="unbounded"/>
 						<xsd:element ref="PhysicalChannelStratumParameters" minOccurs="0" maxOccurs="unbounded"/>
 						<xsd:element ref="SynchronizationandChannelCodingStratumParameters" minOccurs="0" maxOccurs="unbounded"/>

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 (x64) (http://www.altova.com) by Marcin Gnat (DLR) -->
 <xsd:schema xmlns="urn:ccsds:schema:cssm:1.0.0" xmlns:frm="urn:ccsds:schema:frm:1.0.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:ccsds:schema:cssm:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
 	<!--********************************************************************************************************************** -->
 	<!-- Common CCSDS CSS SM Includes -->
 	<!--********************************************************************************************************************** -->
 	<xsd:include schemaLocation="902x12p11-CDE.xsd"/>
 	<!-- for the abstract parameter definition -->
-	<xsd:include schemaLocation="902x05w0_06-ConfPrflCmnClss.xsd"/>
+	<xsd:include schemaLocation="902x05w01-ConfPrflCmnClss.xsd"/>
 	<!--********************************************************************************************************************** -->
 	<!-- Custom Project Functional Resource Strata Includes -->
 	<!--********************************************************************************************************************** -->
@@ -14,67 +15,42 @@
 			etc...
 	-->
 	<!--********************************************************************************************************************** -->
-	<!-- Define SA Information type -->
+	<!-- Define Configuration Profile Information type -->
 	<!--********************************************************************************************************************** -->
-	<xsd:element name="serviceAgreement" type="ServiceAgreementType"/>
-	<xsd:complexType name="ServiceAgreementType">
+	<xsd:element name="configurationProfile" type="ConfigurationProfileType"/>
+	<xsd:complexType name="ConfigurationProfileType">
 		<xsd:complexContent>
 			<xsd:restriction base="SrvMgtInfoEntityType">
 				<xsd:sequence>
-					<xsd:element ref="serviceAgreementHeader" minOccurs="1" maxOccurs="1"/>
-					<xsd:element ref="serviceAgreementData" minOccurs="1" maxOccurs="1"/>
-					<!-- allow multipilicity? -->
-					<!-- allow Config Profile at this level? -->
+					<xsd:element ref="configurationProfileHeader" minOccurs="1" maxOccurs="1"/>
+					<xsd:element ref="configurationProfileDataWrapper" minOccurs="1" maxOccurs="1"/>
 				</xsd:sequence>
 			</xsd:restriction>
 		</xsd:complexContent>
 	</xsd:complexType>
 	<!--********************************************************************************************************************** -->
-	<!-- Define SA possible statuses -->
+	<!-- Define Configuration Profile possible statuses -->
 	<!--********************************************************************************************************************** -->
-	<xsd:simpleType name="ServiceAgreementStatusType">
+	<xsd:simpleType name="ConfigurationProfileStatusType">
 		<xsd:restriction base="xsd:string">
 			<xsd:enumeration value="TEST"/>
 			<xsd:enumeration value="OPERATIONAL"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<!--********************************************************************************************************************** -->
-	<!-- Define SA Header -->
+	<!-- Define Configuration Profile Header -->
 	<!--********************************************************************************************************************** -->
-	<xsd:element name="serviceAgreementHeader" type="ServiceAgreementHeaderType" substitutionGroup="srvMgtHeader"/>
-	<xsd:complexType name="ServiceAgreementHeaderType">
+	<xsd:element name="configurationProfileHeader" type="ConfigurationProfileHeaderType" substitutionGroup="srvMgtHeader"/>
+	<xsd:complexType name="ConfigurationProfileHeaderType">
 		<xsd:complexContent>
 			<xsd:extension base="SrvMgtHeaderType">
 				<xsd:sequence>
 					<xsd:element ref="abstractParameter" minOccurs="0" maxOccurs="unbounded"/>
 				</xsd:sequence>
-				<xsd:attribute name="status" type="ServiceAgreementStatusType" use="required"/>
+				<xsd:attribute name="serviceAgreementRef" type="xsd:string"/>
+				<xsd:attribute name="status" type="ConfigurationProfileStatusType" use="required"/>
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
-	<!--********************************************************************************************************************** -->
-	<!-- Define SA Data -->
-	<!--********************************************************************************************************************** -->
-	<xsd:element name="serviceAgreementData" type="ServiceAgreementDataType" substitutionGroup="srvMgtData"/>
-	<xsd:complexType name="ServiceAgreementDataType">
-		<xsd:complexContent>
-			<xsd:extension base="SrvMgtDataType">
-				<xsd:sequence>
-					<xsd:element ref="serviceAgreementDetails" minOccurs="1" maxOccurs="1"/>
-					<xsd:element ref="configurationProfileData" minOccurs="0" maxOccurs="unbounded"/>
-				</xsd:sequence>
-				<xsd:attribute name="serviceAgreementId" type="xsd:string" use="required"/>
-				<xsd:attribute name="serviceAgreementNickname" type="xsd:string"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<!--********************************************************************************************************************** -->
-	<!-- Define SA Persistent Data -->
-	<!--********************************************************************************************************************** -->
-	<xsd:element name="serviceAgreementDetails" type="ServiceAgreementDetailsType"/>
-	<xsd:complexType name="ServiceAgreementDetailsType">
-		<xsd:sequence>
-			<xsd:element name="serviceAgreementParameter" type="FrParameterType" minOccurs="0" maxOccurs="unbounded"/>
-		</xsd:sequence>
-	</xsd:complexType>
+	<!--	<xsd:element name="mission_X_ConfigurationProfile_1" type="ConfigurationProfileDataType"/> -->
 </xsd:schema>

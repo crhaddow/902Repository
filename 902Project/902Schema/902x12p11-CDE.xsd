@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <xsd:schema xmlns="urn:ccsds:schema:cssm:1.0.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ccsds:schema:cssm:1.0.0" version="1.0.0">
-  
   <xsd:include schemaLocation="902x13w02-AED.xsd"/>
-  
+
   <xsd:include schemaLocation="ndmxml-2.0.0-master-2.0.xsd"/>
-  
+ 
   <!--********************************************************************************************************************** -->
   
   <!-- Define Service Management Event time type-->

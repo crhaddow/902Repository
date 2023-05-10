@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationProfile xsi:schemaLocation="urn:ccsds:schema:cssm:1.0.0 Example-902x05w0_06_DDOR_ConfigProfile_1.xsd" xmlns="urn:ccsds:schema:cssm:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<configurationProfile xsi:schemaLocation="urn:ccsds:schema:cssm:1.0.0 Example-902x05w01_DDOR_ConfigProfile_1.xsd" xmlns="urn:ccsds:schema:cssm:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<configurationProfileHeader originatingOrganization="ESA" generationTime="2021-160T11:20:30" version="1" purpose="Testing purposes" description="Delta DOR Configuration" serviceAgreementRef="ESA-NASA-AgreementNo-42" status="TEST">
 	</configurationProfileHeader>
-	<configurationProfileData configurationProfileId="ddor-x-25" configurationProfileNickname="deltaDor">
+	<configurationProfileDataWrapper configurationProfileId="ddor-x-25" configurationProfileNickname="deltaDor">
 		<serviceProfile>
 			<serviceInfo serviceType="DELTADOR" frequencyBand="X-DS"/>
 			<dependencyConfig>
@@ -274,5 +274,5 @@
 				</DdorRawDataStoreElement>
 			</configurationParameters>
 		</serviceProfile>
-	</configurationProfileData>
+	</configurationProfileDataWrapper>
 </configurationProfile>
