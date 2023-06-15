@@ -24,14 +24,14 @@
     <element xmi:type="uml:Package" href="902x13_AED.uml#_uIEqMLN9Ee2B0Mh7PpZkcw"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mmPeMbOCEe2B0Mh7PpZkcw" x="700" y="280"/>
   </children>
-  <children xmi:type="notation:Shape" xmi:id="_n3HQMLOCEe2B0Mh7PpZkcw" type="Package_Shape" fillColor="12566527">
+  <children xmi:type="notation:Shape" xmi:id="_n3HQMLOCEe2B0Mh7PpZkcw" type="Package_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_n3HQMrOCEe2B0Mh7PpZkcw" type="Package_NameLabel"/>
     <children xmi:type="notation:BasicCompartment" xmi:id="_n3HQM7OCEe2B0Mh7PpZkcw" type="Package_PackagedElementCompartment">
       <styles xmi:type="notation:TitleStyle" xmi:id="_n3HQNLOCEe2B0Mh7PpZkcw"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_n3HQNbOCEe2B0Mh7PpZkcw"/>
     </children>
     <styles xmi:type="notation:StringListValueStyle" xmi:id="_qkSFMLawEe2_hdZ_kHCY0Q" name="cssClass">
-      <stringListValue>_902Package-PinkBook</stringListValue>
+      <stringListValue>_902Package-MagentaBook</stringListValue>
     </styles>
     <element xmi:type="uml:Package" href="902x12_CDE.uml#_8pBLILN9Ee2B0Mh7PpZkcw"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_n3HQMbOCEe2B0Mh7PpZkcw" x="700" y="460"/>

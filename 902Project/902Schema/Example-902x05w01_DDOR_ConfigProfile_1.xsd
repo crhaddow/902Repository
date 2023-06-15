@@ -3,7 +3,7 @@
 	<!--********************************************************************************************************************** -->
 	<!-- Common CCSDS CSS SM Includes -->
 	<!--********************************************************************************************************************** -->
-	<xsd:include schemaLocation="902x12p11-CDE.xsd.xsd"/>
+	<xsd:include schemaLocation="902x12m02-CDE.xsd"/>
 	<xsd:include schemaLocation="902x05w01-ConfPrflCmnClss.xsd"/>
 	<!--********************************************************************************************************************** -->
 	<!-- Custom Project Functional Resource Strata Includes -->
@@ -12,43 +12,4 @@
 	<xsd:include schemaLocation="SanaRegistry/Ccsds401SpaceLinkCarrierRcpt.xsd"/>
 	<xsd:include schemaLocation="SanaRegistry/DdorRawDataCollection.xsd"/>
 	<xsd:include schemaLocation="SanaRegistry/DdorRawDataStore.xsd"/>
-	<!--********************************************************************************************************************** -->
-	<!-- Define Configuration Profile Information type -->
-	<!--********************************************************************************************************************** -->
-	<xsd:element name="configurationProfile" type="ConfigurationProfileType"/>
-	<xsd:complexType name="ConfigurationProfileType">
-		<xsd:complexContent>
-			<xsd:restriction base="SrvMgtInfoEntityType">
-				<xsd:sequence>
-					<xsd:element ref="configurationProfileHeader" minOccurs="1" maxOccurs="1"/>
-					<xsd:element ref="configurationProfileData" minOccurs="1" maxOccurs="1"/>
-				</xsd:sequence>
-			</xsd:restriction>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<!--********************************************************************************************************************** -->
-	<!-- Define Configuration Profile possible statuses -->
-	<!--********************************************************************************************************************** -->
-	<xsd:simpleType name="ConfigurationProfileStatusType">
-		<xsd:restriction base="xsd:string">
-			<xsd:enumeration value="TEST"/>
-			<xsd:enumeration value="OPERATIONAL"/>
-		</xsd:restriction>
-	</xsd:simpleType>
-	<!--********************************************************************************************************************** -->
-	<!-- Define Configuration Profile Header -->
-	<!--********************************************************************************************************************** -->
-	<xsd:element name="configurationProfileHeader" type="ConfigurationProfileHeaderType" substitutionGroup="srvMgtHeader"/>
-	<xsd:complexType name="ConfigurationProfileHeaderType">
-		<xsd:complexContent>
-			<xsd:extension base="SrvMgtHeaderType">
-				<xsd:sequence>
-					<xsd:element ref="abstractParameter" minOccurs="0" maxOccurs="unbounded"/>
-				</xsd:sequence>
-				<xsd:attribute name="serviceAgreementRef" type="xsd:string"/>
-				<xsd:attribute name="status" type="ConfigurationProfileStatusType" use="required"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<!--	<xsd:element name="mission_X_ConfigurationProfile_1" type="ConfigurationProfileDataType"/> -->
 </xsd:schema>

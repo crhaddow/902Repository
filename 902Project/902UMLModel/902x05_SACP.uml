@@ -180,7 +180,9 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_Un7_MN9sEe2lR7GkXag1zA" name="configProfileID">
       <type xmi:type="uml:DataType" href="902xNN_DTM.uml#_7X19gLOFEe2B0Mh7PpZkcw"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_rlHlYO7-Ee2-8rnzy1LmEg" name="configProfileNickname"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_rlHlYO7-Ee2-8rnzy1LmEg" name="configProfileNickname">
+      <type xmi:type="uml:DataType" href="902xNN_DTM.uml#_7X19gLOFEe2B0Mh7PpZkcw"/>
+    </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_H_xpMN-KEe2lR7GkXag1zA" memberEnd="_H_y3Ut-KEe2lR7GkXag1zA _H_y3Vd-KEe2lR7GkXag1zA" navigableOwnedEnd="_H_y3Ut-KEe2lR7GkXag1zA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_H_y3UN-KEe2lR7GkXag1zA" source="org.eclipse.papyrus">
